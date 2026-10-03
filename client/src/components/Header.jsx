@@ -38,6 +38,7 @@ const Header = ({setTodo}) => {
             { 
               tempId: crypto.randomUUID(), 
               createdAt: new Date(),
+              isCompleted: false
             }
             , ...prev
           ]
