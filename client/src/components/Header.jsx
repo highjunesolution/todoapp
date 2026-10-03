@@ -1,4 +1,5 @@
 import { Check, ChevronDown, Plus, Search } from "lucide-react";
+import { createTempId } from "../utils/createTempId";
 
 const Header = ({setTodo}) => {
   return (
@@ -36,7 +37,7 @@ const Header = ({setTodo}) => {
         <button type="button" onClick={()=>setTodo(
           prev=>[
             { 
-              tempId: crypto.randomUUID(), 
+              tempId: createTempId(), 
               createdAt: new Date(),
               isCompleted: false
             }
