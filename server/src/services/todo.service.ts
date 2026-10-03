@@ -36,7 +36,7 @@ export const updateTodo = (
     data: {
       ...(title && { title }),
       ...(description && { description }),
-      ...(isCompleted && { isCompleted }),
+      ...(isCompleted !== undefined && { isCompleted }),
       ...(isCompleted && { completedAt: new Date() }),
     },
   });
