@@ -13,7 +13,7 @@ const Header = () => {
         </div>
       </div>
       <div className="flex items-center gap-4 h-10">
-        <div className="relative hidden md:block">
+        <div className="relative hidden lg:block">
           <input
             type="text"
             className="bg-slate-700 border placeholder:text-slate-400 border-slate-500 pl-10 px-4.5 py-2 rounded-xl hidden md:block outline-0 text-white"
