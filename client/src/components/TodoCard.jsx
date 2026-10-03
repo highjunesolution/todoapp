@@ -40,7 +40,12 @@ const TodoCard = ({ data, onUpdate }) => {
   const hdlUpdate = async (value) => {
     try {
       const res = await updateTodo(data.id, value);
-      console.log(res.data);
+      const updatedTodo = res.data.result;
+      onUpdate((prev) =>
+        prev.map((item) =>
+          item.id === updatedTodo.id ? updatedTodo : item,
+        ),
+      );
       if(value.isCompleted) {
         toast.success(`${value.title} good job!`);
       }
@@ -129,13 +134,7 @@ const TodoCard = ({ data, onUpdate }) => {
           {formatDateTime(data?.updatedAt ? data.updatedAt : data?.createdAt)}
         </p>
       </div>
-      {/* <button
-        type="submit"
-        className="bg-slate-200 py-2 rounded-2xl cursor-pointer font-semibold text-sm"
-        disabled={isSubmitting}
-      >
-        {data?.id ? "Update" : "Add"}
-      </button> */}
+
       {isSubmitting && (
         <div className="absolute bg-slate-100/40 inset-0 flex items-center justify-center">
           <RotateCw size={70} className="animate-spin" />
