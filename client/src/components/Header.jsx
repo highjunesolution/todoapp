@@ -8,8 +8,8 @@ const Header = () => {
           <Check strokeWidth={6} />
         </div>
         <div className="space-y-1.5">
-          <h4 className="text-white text-4xl font-bold">My Tasks</h4>
-          <p className="text-white/60 text-sm">Stay focused. Make progress</p>
+          <h4 className="text-white text-2xl md:text-4xl font-bold">My Tasks</h4>
+          <p className="text-white/60 text-xs md:text-sm">Stay focused. Make progress</p>
         </div>
       </div>
       <div className="flex items-center gap-4 h-10">
@@ -33,8 +33,8 @@ const Header = () => {
           </select>
           <ChevronDown className="text-slate-200 absolute top-2 right-4" />
         </div>
-        <button className="bg-linear-to-r from-blue-500 to-blue-700 py-2 px-6 rounded-xl flex text-white">
-          <Plus /> New task
+        <button className="bg-linear-to-r from-blue-500 to-blue-700 py-2 px-3.5 md:px-6 text-sm md:text-md rounded-xl flex text-white">
+          <Plus className="h-5"/> New task
         </button>
       </div>
     </div>
