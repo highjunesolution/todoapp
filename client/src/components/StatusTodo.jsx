@@ -6,7 +6,7 @@ const StatusTodo = ({ status }) => {
       <span className={`inline-block w-6 h-6 p-1 rounded-xl`}>
         {status ? <Check className="w-full h-full" /> : <CircleDashed className="w-full h-full" />}
       </span>
-      <p>{status ? "Completed" : "In progress"}</p>
+      <p className="hidden sm:block">{status ? "Completed" : "In progress"}</p>
     </div>
   );
 };

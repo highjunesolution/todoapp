@@ -41,12 +41,13 @@ const TodoCard = ({ data, onUpdate }) => {
 
   const hdlUpdate = async (value) => {
     try {
+      const wasCompleted = data.isCompleted;
       const res = await updateTodo(data.id, value);
       const updatedTodo = res.data.result;
       onUpdate((prev) =>
         prev.map((item) => (item.id === updatedTodo.id ? updatedTodo : item)),
       );
-      if (value.isCompleted) {
+      if (!wasCompleted && updatedTodo.isCompleted) {
         toast.success(`${value.title} good job!`);
       }
     } catch (error) {
@@ -87,15 +88,15 @@ const TodoCard = ({ data, onUpdate }) => {
     <form
       onChange={handleFormChange}
       onSubmit={handleSubmit(data?.id ? hdlUpdate : hdlAdd)}
-      className="col-span-12 lg:col-span-6 relative overflow-hidden bg-white rounded-2xl px-6 py-6 flex flex-col gap-4"
+      className="col-span-12 lg:col-span-6 relative overflow-hidden bg-white rounded-2xl px-5 py-4 md:px-6 md:py-6 flex flex-col gap-4"
       id="form-todo"
     >
-      <div className="flex justify-between items-center gap-x-4">
-        <div className="relative h-6 w-6">
+      <div className="flex justify-between items-center gap-2 md:gap-x-4">
+        <div className="relative  h-4 w-4 sm:h-6 sm:w-6">
           <input
             type="checkbox"
             {...register("isCompleted")}
-            className="peer h-6 w-6 appearance-none rounded-md
+            className="peer h-4 w-4 sm:h-6 sm:w-6 appearance-none rounded-md
                border-2 border-slate-300 cursor-pointer
                checked:bg-blue-500 checked:border-blue-500"
           />
@@ -107,7 +108,7 @@ const TodoCard = ({ data, onUpdate }) => {
             aria-hidden="true"
             className="pointer-events-none absolute left-1/2 top-1/2
                -translate-x-1/2 -translate-y-1/2
-               h-5 w-5 text-white invisible peer-checked:visible"
+              h-3.5 w-3.5  sm:h-5 sm:w-5 text-white invisible peer-checked:visible"
           >
             <path d="m5 12 4 4L19 6" />
           </svg>
@@ -115,7 +116,7 @@ const TodoCard = ({ data, onUpdate }) => {
         <input
           type="text"
           className={`
-            flex-1 border text-md outline-0 p-2 rounded-xl border-slate-300 font-semibold 
+            flex-1 border text-sm md:text-md outline-0 p-2 rounded-xl border-slate-300 font-semibold 
             focus:shadow-2xl focus:shadow-blue-300 focus:ring focus:ring-sky-500 ${errors["title"] && "focus:bg-red-100"}
             ${data?.id ? "text-black bg-slate-100" : "text-sky-600"}
           `}
