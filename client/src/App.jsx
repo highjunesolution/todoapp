@@ -4,6 +4,7 @@ import { ToastContainer } from "react-toastify";
 import { useEffect, useState } from "react";
 import { getTodos } from "./api/api";
 import Header from "./components/Header";
+import SummaryCard from "./components/SummaryCard";
 
 const App = () => {
   const [todo, setTodo] = useState([]);
@@ -21,6 +22,7 @@ const App = () => {
     <>
       <div className="min-h-screen bg-slate-900 flex flex-col">
         <Header/>
+        <SummaryCard data={todo}/>
         <div className="flex-1 max-w-7xl mx-auto w-full px-6 py-8 flex flex-col gap-y-4">
           <button
             className="bg-sky-100 ms-auto px-4 py-2 rounded-2xl cursor-pointer"
