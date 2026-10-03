@@ -1,6 +1,6 @@
 import { Check, ChevronDown, Plus, Search } from "lucide-react";
 
-const Header = () => {
+const Header = ({setTodo}) => {
   return (
     <div className="max-w-7xl mx-auto w-full px-6 py-4 flex justify-between items-center">
       <div className="flex gap-6 items-center">
@@ -33,7 +33,16 @@ const Header = () => {
           </select>
           <ChevronDown className="text-slate-200 absolute top-2 right-4" />
         </div>
-        <button className="bg-linear-to-r from-blue-500 to-blue-700 py-2 px-3.5 md:px-6 text-sm md:text-md rounded-xl flex text-white">
+        <button type="button" onClick={()=>setTodo(
+          prev=>[
+            { 
+              tempId: crypto.randomUUID(), 
+              createdAt: new Date(),
+            }
+            , ...prev
+          ]
+        )} 
+          className="bg-linear-to-r from-blue-500 to-blue-700 py-2 px-3.5 md:px-6 text-sm md:text-md rounded-xl flex text-white">
           <Plus className="h-5"/> New task
         </button>
       </div>

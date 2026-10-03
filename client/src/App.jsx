@@ -1,4 +1,3 @@
-import { Plus } from "lucide-react";
 import TodoCard from "./components/TodoCard";
 import { ToastContainer } from "react-toastify";
 import { useEffect, useState } from "react";
@@ -21,23 +20,9 @@ const App = () => {
   return (
     <>
       <div className="min-h-screen bg-slate-900 flex flex-col">
-        <Header/>
+        <Header setTodo={setTodo}/>
         <SummaryCard data={todo}/>
-        <div className="flex-1 max-w-7xl mx-auto w-full px-6 py-8 flex flex-col gap-y-4">
-          <button
-            className="bg-sky-100 ms-auto px-4 py-2 rounded-2xl cursor-pointer"
-            onClick={() =>
-              setTodo((prev) => [
-                {
-                  tempId: crypto.randomUUID(),
-                  createdAt: new Date(),
-                },
-                ...prev,
-              ])
-            }
-          >
-            <Plus className="text-sky-600" />
-          </button>
+        <div className="flex-1 max-w-7xl mx-auto w-full px-6 py-4 flex flex-col gap-y-4">
           <div className="grid grid-cols-12 gap-8">
             {todo.length &&
               todo.map((item) => (
